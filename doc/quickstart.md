@@ -67,7 +67,7 @@ Generally, the first step in validating your installation is to ensure that the 
 $ kubectl get pods --all-namespaces | grep -i multus
 ```
 
-You may further validate that it has ran by looking at the `/etc/cni/net.d/` directory and ensure that the alphabetically first
+You may further validate that it has ran by looking at the `/etc/cni/net.d/` directory and ensure that the alphabetically first entry is a file containing the name `multus.conf` (e.g. `00-multus.conf`).
 
 ## Creating additional interfaces
 
@@ -151,7 +151,7 @@ kubectl describe network-attachment-definitions macvlan-conf
 
 ### Creating a pod that attaches an additional interface
 
-We're going to create a pod. This will look familiar as any pod you might have created before, but, we'll have a special `annotations` field -- in this case we'll have an annotation called `k8s.v1.cni.cncf.io/networks`. This field takes a comma delimited list of the names of your `NetworkAttachmentDefinition`s as we created above. Note in the comand below that we have the annotation of `k8s.v1.cni.cncf.io/networks: macvlan-conf` where `macvlan-conf` is the name we used above when we created our configuration.
+We're going to create a pod. This will look familiar as any pod you might have created before, but, we'll have a special `annotations` field -- in this case we'll have an annotation called `k8s.v1.cni.cncf.io/networks`. This field takes a comma delimited list of the names of your `NetworkAttachmentDefinition`s as we created above. Note in the command below that we have the annotation of `k8s.v1.cni.cncf.io/networks: macvlan-conf` where `macvlan-conf` is the name we used above when we created our configuration.
 
 Let's go ahead and create a pod (that just sleeps for a really long time) with this command:
 
